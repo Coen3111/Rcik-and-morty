@@ -1,64 +1,66 @@
-/* General Styling */
-body {
-  font-family: 'Arial', sans-serif;
-  text-align: center;
-  background: #1e1e2f;
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
+// Data for procedural generation
+const universeAdjectives = ["Ethereal", "Quantum", "Pixelated", "Apocalyptic", "Chaotic", "Frozen"];
+const universeNouns = ["Realm", "Dimension", "Galaxy", "Zone", "Universe", "Void"];
+const universeProperties = [
+  "Time flows backward here.",
+  "Gravity is non-existent.",
+  "Everything is made of neon.",
+  "The sky is filled with portals.",
+  "Aliens rule this land.",
+  "Humans never existed."
+];
+
+const alienNames = ["Zorblax", "Glimph", "Xanadu", "Quor'th", "Neblix"];
+const alienTypes = ["Warrior", "Trader", "Scavenger", "Scientist", "Hunter"];
+const actions = [
+  "You engage in a fierce battle!",
+  "You attempt to trade valuable items.",
+  "You explore a strange ruin.",
+  "You find a hidden portal.",
+  "You encounter a mysterious figure."
+];
+
+let currentUniverse = {};
+let adventureLog = "";
+
+// Generate a random universe
+function generateUniverse() {
+  const name = `${universeAdjectives[Math.floor(Math.random() * universeAdjectives.length)]} ${universeNouns[Math.floor(Math.random() * universeNouns.length)]}`;
+  const property = universeProperties[Math.floor(Math.random() * universeProperties.length)];
+  currentUniverse = { name, property };
+  document.getElementById("universe-description").innerText = `You are in the ${name}. ${property}`;
 }
 
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
+// Generate a random alien encounter
+function generateAlien() {
+  const name = alienNames[Math.floor(Math.random() * alienNames.length)];
+  const type = alienTypes[Math.floor(Math.random() * alienTypes.length)];
+  return `${type} Alien ${name}`;
 }
 
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
+// Handle player input
+function processInput() {
+  const input = document.getElementById("input-box").value.toLowerCase();
+  let response = "";
+
+  if (input.includes("travel")) {
+    generateUniverse();
+    response = "You open a portal and travel to a new universe!";
+  } else if (input.includes("alien")) {
+    const alien = generateAlien();
+    response = `You encounter a ${alien}. ${actions[Math.floor(Math.random() * actions.length)]}`;
+  } else if (input.includes("attack")) {
+    response = "You launch an attack! The outcome is uncertain...";
+  } else if (input.includes("explore")) {
+    response = "You explore the strange terrain and uncover hidden secrets.";
+  } else {
+    response = "Your action doesn't seem to have any effect.";
+  }
+
+  adventureLog += `\n${response}`;
+  document.getElementById("event-log").innerText = adventureLog;
+  document.getElementById("input-box").value = "";
 }
 
-p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 1.2em;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
-  color: white;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-/* Portal Effect */
-.portal {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin: 20px auto;
-  background: radial-gradient(circle, rgba(0, 255, 0, 0.8), transparent);
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Display Boxes */
-.display-box {
-  border: 2px solid #ffffff;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  font-size: 1.2em;
-}
+// Initialize game
+generateUniverse();
