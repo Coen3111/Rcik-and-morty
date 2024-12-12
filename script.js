@@ -1,60 +1,47 @@
-// Dimension Generator
-const adjectives = ["Evil", "Upside-Down", "Pixelated", "Quantum", "Alien", "Tiny"];
-const nouns = ["Planet", "Realm", "Dimension", "World", "Galaxy", "Zone"];
-const properties = [
-  "Gravity is reversed", 
-  "Everyone is a robot", 
-  "Time loops forever", 
-  "Cats are the dominant species",
-  "Humans evolved into blobs",
-  "Pizza is the national currency"
-];
-
-function generateDimension() {
-  const name = `${adjectives[Math.floor(Math.random() * adjectives.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}`;
-  const property = properties[Math.floor(Math.random() * properties.length)];
-  return { name, property };
+/* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #1e1e2f;
+  color: white;
+  text-align: center;
 }
 
-// Character Generator
-const characters = ["Rick", "Morty", "Summer", "Beth", "Jerry"];
-const traits = ["Evil", "Genius", "Lazy", "Buff", "Alien", "Tiny", "Cactus"];
-const quirks = [
-  "has three eyes", 
-  "talks in rhymes", 
-  "is always hungry", 
-  "is scared of portals", 
-  "invented a time machine"
-];
-
-function generateCharacter() {
-  const name = characters[Math.floor(Math.random() * characters.length)];
-  const variant = traits[Math.floor(Math.random() * traits.length)];
-  const quirk = quirks[Math.floor(Math.random() * quirks.length)];
-  return `${variant} ${name} (${quirk})`;
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
 }
 
-// Timeline Event Generator
-const events = [
-  "Aliens invaded and won.",
-  "Humans evolved into lizards.",
-  "Time flows backward.",
-  "Gravity is optional.",
-  "Everyone can fly but forgets how to walk.",
-  "All technology stopped working."
-];
-
-function generateTimeline() {
-  return events[Math.floor(Math.random() * events.length)];
+h1 {
+  font-size: 2.5em;
 }
 
-// Travel Function
-function travel() {
-  const dimension = generateDimension();
-  const character = generateCharacter();
-  const timeline = generateTimeline();
+.display-box {
+  border: 2px solid #ffffff;
+  padding: 20px;
+  margin: 10px 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
 
-  document.getElementById("dimension-display").innerHTML = `<h2>Welcome to ${dimension.name}</h2><p>${dimension.property}</p>`;
-  document.getElementById("character-display").innerHTML = `<h3>Meet: ${character}</h3>`;
-  document.getElementById("timeline-display").innerHTML = `<p>Timeline Event: ${timeline}</p>`;
+input {
+  padding: 10px;
+  font-size: 1em;
+  width: 70%;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #45a049;
 }
