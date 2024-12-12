@@ -3,20 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multiverse Simulator</title>
+  <title>Infinite Multiverse Adventure</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>🌌 Multiverse Simulator 🌌</h1>
-    <p>Travel through infinite dimensions and meet countless versions of your favorite characters!</p>
-    
-    <button class="portal-button" onclick="travel()">🌌 Travel to a New Dimension 🌌</button>
-    <div class="portal"></div>
-
-    <div id="dimension-display" class="display-box"></div>
-    <div id="character-display" class="display-box"></div>
-    <div id="timeline-display" class="display-box"></div>
+    <h1>🌌 Infinite Multiverse Adventure 🌌</h1>
+    <p>Explore infinite universes, battle aliens, and shape your story!</p>
+    <div id="universe-display" class="display-box">
+      <h2>Current Universe: None</h2>
+      <p id="universe-description"></p>
+    </div>
+    <div id="event-display" class="display-box">
+      <h2>Adventure Log</h2>
+      <p id="event-log"></p>
+    </div>
+    <div id="player-input" class="display-box">
+      <input type="text" id="input-box" placeholder="What will you do? (e.g., 'attack alien')">
+      <button onclick="processInput()">Submit</button>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
